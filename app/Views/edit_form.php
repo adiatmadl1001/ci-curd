@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="armada.ico" type="image/x-icon">
+    <title>PT. Mekar Armada Jaya</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Document</title>
 </head>
 <body>
     <header class="flex space-x-2 items-center bg-blue-600 p-4">
@@ -28,7 +28,8 @@
                         <strong class="font-bold"><?= session()->getFlashdata('success') ?></strong>
                     </div>
                 <?php endif; ?>
-                <form action="<?= base_url('employees/update'. $employees['id']); ?>" method="POST">
+                <form action="<?= base_url('employees/update')?>" method="POST">
+                    <input type="hidden" id="id" name="id" value="<?= $employees['id']; ?>">
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
                         <input type="text" id="name" name="name" value="<?= $employees['name']; ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required >
@@ -40,7 +41,7 @@
                     <div class="mb-4">
                         <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role</label>
                         <select id="role" name="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required >
-                            <option value="<?= $employees['role']; ?>" disabled>Select Position</option>
+                            <option value="<?= $employees['role']; ?>">Select Position</option>
                             <option value="Developer">Developer</option>
                             <option value="Project Manager">Project Manager</option>
                             <option value="Designer">Designer</option>

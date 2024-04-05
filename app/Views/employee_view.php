@@ -25,7 +25,7 @@
             <div>
                 <img src="<?=base_url('img/ico.png')?>" alt="PT Mekar Armada Jaya" class="header-logo w-10">
             </div>
-            <h1 class="text-white text-xl font-bold mt-1">Employee Table</h1>
+            <h1 class="text-white text-xl font-bold mt-1"><a href="<?=base_url('/')?>">Employee Table</a></h1>
         </div>
         <form action="<?= base_url('/employees-form') ?>" method="get">
             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
@@ -35,12 +35,43 @@
     </header>
     <!-- Employee Table -->
     <div class="container mx-auto py-8">
-        <?php if (session()->getFlashdata('successdel')): ?>
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-2 mb-2" role="alert">
-                <?= session()->getFlashdata('successdel') ?>
+        <div class="flex justify-between">
+            <div class="flex items-center mb-2">
+                <form action="">
+                    <input name="q" type="text" placeholder="Search..." class="border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:border-blue-500">
+                    <button type="submit" class="ml-0.5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <i class="fas fa-search" style="color: #ffffff;"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="relative">
+                <form action="">
+                    <select class="border border-gray-300 focus:outline-none focus:border-blue-500 rounded-lg py-2 pl-4 pr-10 block appearance-none leading-normal">
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Project Manager">Project Manager</option>
+                        <option value="Designer">Designer</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12l-5-5 1.5-1.5L10 9l3.5-3.5L15 7z"/></svg>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold"><?= session()->getFlashdata('success') ?></strong>
+            </div>
+        <?php elseif (session()->getFlashdata('update')): ?>
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold"><?= session()->getFlashdata('update') ?></strong>
+            </div>
+        <?php elseif (session()->getFlashdata('delete')): ?>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold"><?= session()->getFlashdata('delete') ?></strong>
             </div>
         <?php endif; ?>
-        <table class="min-w-full bg-white shadow-md rounded">
+        <table class="mt-4 min-w-full bg-white shadow-md rounded">
             <thead>
                 <tr class="border-b">
                     <!-- <th class="text-left p-3 px-5">No.</th> -->
