@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Employees::index');
+$routes->get('/', 'Employees::index',['filter' => 'login']);
 $routes->get('/employees-form', 'Employees::form');
 $routes->post('/employees-form', 'Employees::add');
 $routes->get('employees/delete/(:num)', 'Employees::delete/$1');
