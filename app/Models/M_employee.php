@@ -17,6 +17,15 @@ class M_employee extends Model
         }
     }
 
+    public function searchEmployees($q)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->like('name',$q);
+        // $builder->like('role',$c);
+        return $builder->get()->getResultArray();
+
+    }
+
     public function saveEmployees($data)
     {
         $builder = $this->db->table($this->table);

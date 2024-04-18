@@ -23,11 +23,6 @@
         <div class="w-1/2">
             <div class="container mx-10 mt-7">
                 <h1 class="text-3xl font-semibold mb-4">Register</h1>
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-2 mb-2" role="alert">
-                        <strong class="font-bold"><?= session()->getFlashdata('success') ?></strong>
-                    </div>
-                <?php endif; ?>
                 <form action="<?= base_url('/employees-form') ?>" method="POST">
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>

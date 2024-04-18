@@ -8,11 +8,17 @@ class Employees extends BaseController
     public function index()
     {
         $model = new M_employee;
-        $data['getEmployees'] = $model->getEmployees();
+        if($this->request->getGet('q')){
+            $q=$this->request->getGet('q');
+            $data['getEmployees'] = $model->searchEmployees($q);
+            // like('name',$q)->getAll();
+        // }elseif($this->request->getGet('c')){
+        //     $c = $this->request->getGet('c');
+        //     $data['getEmployees'] = $model->searchEmployees($c);
+        }else{
+            $data['getEmployees'] = $model->getEmployees();
+        }
         
-        // $this->load->model('M_employee');
-        // $data['employee'] = $this->M_employee->getEmployees();
-        // $this->load->view('employee_view',$data);
         return view('employee_view', $data);
     }
 
@@ -32,7 +38,7 @@ class Employees extends BaseController
         );
         $model->saveEmployees($data);
         session()->setFlashdata('success', 'Employee added successfully.');
-        return view('form_employee_view');
+        return redirect()->to(base_url('/'));
     }
 
     public function edit($id)
@@ -54,15 +60,16 @@ class Employees extends BaseController
             'address'   =>$this->request->getPost('address')
         );
         $model->editEmployees($data, $id);
+        session()->setFlashdata('update', 'Employee update succesfully.');
         return redirect()->to(base_url('/'));
     }
 
     public function delete($id)
     {
         $model = new M_employee;
-        $model->where('id', $id)->delete();
+        $result = $model->where('id', $id)->delete();
         
-        session()->setFlashdata('succesdel', 'Employee deleted from table.');
+        session()->setFlashdata('delete', 'Employee deleted from table.');
         
         return redirect()->to(base_url('/'));
 
