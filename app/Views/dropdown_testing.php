@@ -46,10 +46,18 @@
                 <tr class="mod border-b hover:bg-gray-100">
                     <td class="p-3 px-5"><?= $no; ?></td>
                     <td class="p-3 px-5"><?= $row['dropbox_id']; ?></td>
-                    <td class="p-3 px-5">
+                    <td class="flex p-3 space-x-2">
                         <button type="button" class="info-btn inline-flex items-center px-2 py-1 border border-transparent text-xs font-semibold rounded-md text-blue-600 bg-blue-200 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                             Info
                         </button>
+                        <a href="dropbox-test/pdf/print">
+                            <button type="button" class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-semibold rounded-md text-green-600 bg-green-200 hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-print w-4 h-4 mr-2">
+                                    <path d="M12 2v6M3 9h18v10a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2zM3 14h18M12 22v-4"></path>
+                                </svg>
+                                Print
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 <tr class="info-row hidden">
